@@ -7,7 +7,7 @@ The segementation model is based on the **U-Net** architecture with applying **d
 The file name of each image and its corresponding layer and cell labeling should be the same.
 
 ```
-./[your own path]/dataset/dataset
+./[your own path]/dataset
 ----/image   % Image files [png]
 --------/1_20180129094629_cheek.png
 --------/1_20180209120922_normal.png
