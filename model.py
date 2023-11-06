@@ -52,7 +52,10 @@ class up_conv(nn.Module):
         super(up_conv,self).__init__()
         self.up = nn.Sequential(
             nn.Upsample(mode='bilinear', scale_factor=2),
-            nn.Conv2d(ch_in, ch_out, kernel_size=3),
+            nn.Conv2d(ch_in, ch_out, kernel_size=3,stride=1,padding=1,bias=True),
+            nn.InstanceNorm2d(ch_out),
+            nn.LeakyReLU(inplace=True),
+            nn.Conv2d(ch_out, ch_out, kernel_size=3,stride=1,padding=1,bias=True),
             nn.InstanceNorm2d(ch_out),
             nn.LeakyReLU(inplace=True)
         )
@@ -65,7 +68,10 @@ class up_conv2(nn.Module):
         super(up_conv2,self).__init__()
         self.up = nn.Sequential(
             nn.Upsample(mode='bilinear', scale_factor=factor),
-            nn.Conv2d(ch_in, ch_out, kernel_size=3),
+            nn.Conv2d(ch_in, ch_out, kernel_size=3,stride=1,padding=1,bias=True),
+            nn.InstanceNorm2d(ch_out),
+            nn.LeakyReLU(inplace=True),
+            nn.Conv2d(ch_out, ch_out, kernel_size=3,stride=1,padding=1,bias=True),
             nn.InstanceNorm2d(ch_out),
             nn.LeakyReLU(inplace=True)
         )
